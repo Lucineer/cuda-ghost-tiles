@@ -2,7 +2,12 @@
 name = "cuda-ghost-tiles"
 version = "0.1.0"
 edition = "2021"
-description = "Ghost tiles — sparse attention patterns that learn which positions matter, inspired by幽灵平铺"
+description = "Sparse attention tiles with weight-based pruning"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/Lucineer/cuda-ghost-tiles"
+readme = "README.md"
+keywords = ["ai", "fleet", "agent", "rust"]
+categories = ["science"]
 
 [dependencies]
 serde = { version = "1", features = ["derive"] }
