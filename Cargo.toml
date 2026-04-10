@@ -1,0 +1,8 @@
+[package]
+name = "cuda-ghost-tiles"
+version = "0.1.0"
+edition = "2021"
+description = "Ghost tiles — sparse attention patterns that learn which positions matter, inspired by幽灵平铺"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
