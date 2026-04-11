@@ -1,49 +1,84 @@
 # cuda-ghost-tiles
 
-**Learned sparse attention patterns for efficient agent cognition.**
+Learned sparse attention — ghost tiles prune unnecessary positions while preserving relevance (Rust)
 
-> In a sea of possible connections, most don't matter.
-> Ghost tiles learn which positions in an attention matrix are worth computing.
+Part of the Cocapn fleet — a Lucineer vessel component.
 
-## The Problem
+## What It Does
 
-Full attention is O(n^2). For a fleet of agents processing long contexts, this becomes the bottleneck. Most attention positions contribute nothing.
+### Key Types
 
-## The Solution
+- `GhostTile` — core data structure
+- `GhostPattern` — core data structure
+- `GhostTileManager` — core data structure
 
-Ghost tiles learn which positions *actually matter*. Unimportant tiles become "ghosts" - present in the logical pattern but computationally absent.
+## Quick Start
 
-### How It Works
+```bash
+# Clone
+git clone https://github.com/Lucineer/cuda-ghost-tiles.git
+cd cuda-ghost-tiles
 
-1. **Tile Grid**: Divide attention matrix into 8x8 tiles
-2. **Weight Learning**: Track which tiles get used, strengthen active ones
-3. **Pruning**: Deactivate lowest-weight tiles to meet sparsity budget
-4. **Decay**: Unused tiles lose weight over time
-5. **Merge**: Combine complementary patterns for multi-task agents
-6. **CUDA Mapping**: Each tile = one GPU thread block
+# Build
+cargo build
 
-### Available In
+# Run tests
+cargo test
+```
 
-- **Rust** (`cuda-ghost-tiles`) - Primary implementation
-- **C** (`ghost-tiles-c`) - Zero deps, ARM64/WASM portable, 12/12 tests pass
-- **C++** (`ghost-tiles-cpp`) - Modern C++17 with RAII and ranges
-- **C#** (`ghost-tiles-csharp`) - .NET 8 with LINQ
-- **CUDA** (`ghost-tiles-cuda`) - GPU kernels for sparse attention
+## Usage
 
-## Ecosystem Integration
+```rust
+use cuda_ghost_tiles::*;
 
-- `cuda-attention` - Uses ghost tiles for saliency scoring
-- `cuda-memory-fabric` - Tiles stored as procedural memory
-- `cuda-emergence` - Sparse patterns detected as emergent behavior
-- `cuda-voxel-logic` - 2D attention tiles generalize to 3D spatial tiles
+// See src/lib.rs for full API
+// 20 unit tests included
+```
 
-## See Also
+### Available Implementations
 
-- [cuda-attention](https://github.com/Lucineer/cuda-attention) - Attention mechanisms
-- [cuda-emergence](https://github.com/Lucineer/cuda-emergence) - Emergent pattern detection
-- [ghost-tiles-c](https://github.com/Lucineer/ghost-tiles-c) - C implementation
-- [ghost-tiles-cuda](https://github.com/Lucineer/ghost-tiles-cuda) - CUDA kernels
+- `GhostTile` — see source for methods
+- `GhostPattern` — see source for methods
+- `GhostTileManager` — see source for methods
+
+## Testing
+
+```bash
+cargo test
+```
+
+20 unit tests covering core functionality.
+
+## Architecture
+
+This crate is part of the **Cocapn Fleet** — a git-native multi-agent ecosystem.
+
+- **Category**: other
+- **Language**: Rust
+- **Dependencies**: See `Cargo.toml`
+- **Status**: Active development
+
+## Related Crates
+
+
+## Fleet Position
+
+```
+Casey (Captain)
+├── JetsonClaw1 (Lucineer realm — hardware, low-level systems, fleet infrastructure)
+├── Oracle1 (SuperInstance — lighthouse, architecture, consensus)
+└── Babel (SuperInstance — multilingual scout)
+```
+
+## Contributing
+
+This is a fleet vessel component. Fork it, improve it, push a bottle to `message-in-a-bottle/for-jetsonclaw1/`.
 
 ## License
 
-MIT OR Apache-2.0
+MIT
+
+---
+
+*Built by JetsonClaw1 — part of the Cocapn fleet*
+*See [cocapn-fleet-readme](https://github.com/Lucineer/cocapn-fleet-readme) for the full fleet roadmap*
